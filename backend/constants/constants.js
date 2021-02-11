@@ -1,0 +1,5 @@
+const BLOCK_SIZE = 5;
+const MAX_NUMBER_LIMIT = 100;
+const MIN_NUMBER_LIMIT = 1;
+
+module.exports = { BLOCK_SIZE, MAX_NUMBER_LIMIT, MIN_NUMBER_LIMIT };
