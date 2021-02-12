@@ -7,6 +7,7 @@ require("dotenv").config();
 const index = require("./src/routes/index");
 
 const app = express();
+
 app.use(cors("*"));
 
 app.use(index);

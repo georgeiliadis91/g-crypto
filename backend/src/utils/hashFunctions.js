@@ -6,19 +6,19 @@ Task string []
 returns hash string
 */
 
-function generateHash(stringArray) {
+function generateHash(hashArray) {
   let tempString = "";
 
-  for (const i of stringArray) {
-    tempString += i.toString();
+  for (const hashItem of hashArray) {
+    tempString += hashItem;
   }
 
   return hash(tempString);
 }
 
-/* Generates number inside the min-max range */
-function generateNumber() {
-  return (
+/* Generates number inside the min-max range and then hashed it */
+function generateDummyHash() {
+  return hash(
     Math.floor(
       Math.random() *
         (Math.floor(constants.MAX_NUMBER_LIMIT) -
@@ -29,14 +29,20 @@ function generateNumber() {
 }
 
 /* Creates a transaction block hash */
-
 function createTransactionBlockHash() {
   let transactionArray = [];
   for (let i = 0; i < constants.BLOCK_SIZE; i++) {
-    transactionArray.push(generateNumber());
+    transactionArray.push(generateDummyHash());
   }
 
-  return generateHash(transactionArray);
+  return {
+    transactionArray: transactionArray,
+    targetHash: generateHash(transactionArray),
+  };
 }
 
-module.exports = { generateHash, createTransactionBlockHash, generateNumber };
+module.exports = {
+  generateHash,
+  createTransactionBlockHash,
+  generateDummyHash,
+};
